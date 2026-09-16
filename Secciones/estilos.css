@@ -1,0 +1,294 @@
+/* CONFIGURACIÓN GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Montserrat es limpia, pero dinámica */
+    font-family: 'Montserrat', Arial, sans-serif;
+    background-color: #0a1128; /* Azul noche profundo */
+    background-image: radial-gradient(#1c2e4a 1px, transparent 1px);
+    background-size: 20px 20px; /* Efecto de puntos estilo manga/cómic (Halftone) */
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    text-align: center;
+    padding: 70px 20px;
+    background: #003057; /* Azul U.A. High */
+    border-bottom: 8px solid #e70012; /* Rojo icónico de MHA */
+    position: relative;
+    box-shadow: 0 10px 0px #f3d300; /* Borde amarillo de All Might */
+    margin-bottom: 30px;
+}
+
+.encabezado h1 {
+    font-family: 'Bangers', cursive; /* Letra de cómic */
+    font-size: 70px;
+    letter-spacing: 4px;
+    color: #f3d300; /* Amarillo MHA */
+    /* Sombra de texto doble: rojo y negro para el efecto del logo de la serie */
+    text-shadow: 4px 4px 0px #e70012, 8px 8px 0px #000000;
+    text-transform: uppercase;
+}
+
+.encabezado p {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 10px 0 25px;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
+}
+
+/* NAVEGACIÓN */
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 25px;
+    margin: 0 5px;
+    background-color: #f3d300;
+    color: #000000;
+    font-family: 'Bangers', cursive;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: 3px solid #000000; /* Borde de cómic */
+    transform: skew(-10deg); /* Inclinación de acción */
+    box-shadow: 4px 4px 0px #e70012;
+    transition: 0.2s all;
+}
+
+nav a:hover {
+    background-color: #e70012;
+    color: #ffffff;
+    box-shadow: 4px 4px 0px #f3d300;
+    transform: skew(-10deg) translate(-3px, -3px); /* Efecto de salto */
+}
+
+/* SECCIONES */
+section {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 35px;
+    background-color: #ffffff; /* Fondo blanco como panel de manga */
+    color: #000000;
+    border: 4px solid #000000;
+    border-radius: 0px; /* Bordes cuadrados, más rústicos */
+    box-shadow: 12px 12px 0px #003057; /* Sombra sólida bloque */
+    position: relative;
+}
+
+section h2 {
+    font-family: 'Bangers', cursive;
+    color: #ffffff;
+    background-color: #00a0d1; /* Azul cielo / Teal de Deku */
+    font-size: 35px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    padding: 5px 20px;
+    display: inline-block;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0px #e70012;
+    transform: skew(-10deg);
+}
+
+section p {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+/* DATOS (Expedientes de Héroes) */
+.datos {
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.dato {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 3px solid #000000;
+    border-top: 8px solid #f3d300;
+    box-shadow: 5px 5px 0px #000000;
+}
+
+.dato h3 {
+    font-family: 'Bangers', cursive;
+    color: #e70012;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* PERSONAJES (Tarjetas de Héroes/Villanos) */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.personaje {
+    padding: 25px;
+    background-color: #f3d300;
+    color: #000;
+    border: 3px solid #000;
+    box-shadow: 8px 8px 0px #003057;
+    transition: 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.personaje:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 12px 12px 0px #e70012; /* Cambia a rojo al pasar el mouse */
+}
+
+.personaje h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 28px;
+    color: #000000;
+    background-color: #ffffff;
+    display: inline-block;
+    padding: 2px 15px;
+    border: 2px solid #000;
+    margin-bottom: 15px;
+    transform: skew(-5deg);
+}
+
+/* LISTA (Requisitos de U.A.) */
+.academia ul {
+    margin-top: 20px;
+    padding-left: 30px;
+    list-style-type: square;
+}
+
+.academia li {
+    margin: 10px 0;
+    font-weight: 700;
+    color: #003057;
+}
+
+/* TABLA (Estadísticas Quirks) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    border: 3px solid #000;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 2px solid #000;
+}
+
+th {
+    background-color: #e70012; /* Cabecera roja */
+    color: #ffffff;
+    font-family: 'Bangers', cursive;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+td {
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+/* PIE DE PÁGINA */
+footer {
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+    background-color: #0a1128;
+    border-top: 5px solid #e70012;
+    border-bottom: 15px solid #003057;
+}
+
+footer p {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #f3d300;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #e70012;
+    padding: 5px 10px;
+    border: 2px solid #000;
+    font-weight: 900;
+    transition: 0.2s;
+}
+
+footer a:hover {
+    background-color: #f3d300;
+    color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+    .encabezado h1 {
+        font-size: 45px;
+        text-shadow: 3px 3px 0px #e70012, 5px 5px 0px #000000;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+        transform: skew(0deg); /* Quitamos inclinación en móvil para que encaje mejor */
+    }
+
+    nav a:hover {
+        transform: translate(-3px, -3px);
+    }
+
+    .datos {
+        flex-direction: column;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        margin: 20px 10px;
+        padding: 25px;
+        box-shadow: 6px 6px 0px #003057;
+    }
+}
+
+
+/* ESTILOS PARA IMÁGENES DE PERSONAJES */
+
+.contenedor-img {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border: 3px solid #000000;
+    margin-bottom: 15px;
+    background-color: #000000;
+    box-shadow: 4px 4px 0px #000000;
+}
+
+.contenedor-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    object-position: center top; /* Centra la vista hacia arriba (rostros) */
+    transition: transform 0.3s ease;
+}
+
+/* Efecto de zoom de acción al pasar el ratón */
+.personaje:hover .contenedor-img img {
+    transform: scale(1.1);
+}
