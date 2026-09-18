@@ -1,0 +1,577 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore the universe</title>
+</head>
+<body>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            background:
+                radial-gradient(circle at 15% 20%, #26356b 0%, transparent 25%),
+                radial-gradient(circle at 85% 70%, #42166d 0%, transparent 25%),
+                linear-gradient(135deg, #030615, #0b1028, #170923);
+            background-attachment: fixed;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle, white 1px, transparent 1px),
+                radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 90px 90px, 140px 140px;
+            background-position: 10px 20px, 50px 80px;
+            opacity: 0.25;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .icono {
+            font-size: 75px;
+            margin-bottom: 20px;
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+            background: linear-gradient(
+                90deg,
+                #67e8f9,
+                #818cf8,
+                #c084fc
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #d6dcf5;
+        }
+
+        .seccion {
+            margin-bottom: 35px;
+            padding: 40px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .seccion h2 {
+            margin-bottom: 22px;
+            font-size: 30px;
+            color: #8be9fd;
+        }
+
+        .seccion p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #d6dcf5;
+        }
+
+        .tarjetas {
+            display: grid;
+            grid-template-columns:
+            repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .tarjeta-info {
+            padding: 25px;
+            text-align: center;
+            border-radius: 20px;
+            background:rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: 0.3s ease;
+        }
+
+        .tarjeta-info:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 15px 30px rgba(120, 100, 255, 0.25);
+        }
+
+        .tarjeta-info span {
+            display: block;
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .tarjeta-info h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .tarjeta-info p {
+            font-size: 14px;
+        }
+
+        .lista-planetas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .lista-planetas div {
+            padding: 20px;
+            border-left: 4px solid #818cf8;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .lista-planetas strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .lista-planetas span {
+            color: #c7cee8;
+            font-size: 14px;
+        }
+
+        .dato-destacado {
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(129, 140, 248, 0.3);
+        }
+
+        .dato-destacado strong {
+            display: block;
+            margin-bottom: 10px;
+            color: #a5b4fc;
+            font-size: 19px;
+        }
+
+        .datos {
+            list-style: none;
+            display: grid;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .datos li {
+            padding: 18px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #dce2f7;
+            transition: 0.3s;
+        }
+
+        .datos li:hover {
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .conclusion {
+            text-align: center;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(99, 102, 241, 0.15),
+                    rgba(168, 85, 247, 0.12)
+                );
+        }
+
+        .regreso {
+            text-align: center;
+            padding: 30px 0 10px;
+        }
+
+        .boton-regresar {
+            display: inline-block;
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            background:
+                linear-gradient(
+                    90deg,
+                    #6366f1,
+                    #a855f7
+                );
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+            transition: 0.3s ease;
+        }
+
+        .boton-regresar:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 35px rgba(168, 85, 247, 0.5);
+        }
+
+        @keyframes flotar {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        
+        @media (max-width: 800px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+            
+            .lista-planetas {
+                grid-template-columns: 1fr;
+            }
+            
+            .seccion {
+                padding: 28px 20px;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .contenedor {
+                width: 94%;
+            }
+            
+            .hero {
+                padding: 40px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .seccion h2 {
+                font-size: 25px;
+            }
+        }
+
+    </style>
+
+    <main class="contenedor">
+
+        <section class="hero">
+            <div class="icono">🚀</div>
+            <h1>Explora el espacio</h1>
+            <p>
+                El universo es un lugar enorme lleno de galaxias,
+                estrellas, planetas y fenómenos que todavía se estan
+                descubriendo.
+            </p>
+        </section>
+
+        <section class="seccion">
+            <h2>🌌 ¿Qué es el espacio?</h2>
+            <p>
+                El espacio exterior es la enorme región que existe más allá
+                de la atmósfera de la tierra. En él se encuentran los planetas,
+                estrellas, galaxias, nebulosas, asteroides, cometas y muchos
+                otros objetos celestes.
+            </p>
+            <p>
+                El universo observable contiene una enorme cantidad de
+                galaxias y cada una puede contener millones o incluso
+                miles de millones de estrellas; a pesar de los avances
+                científicos, todavía conocemos solamente una pequeña parte
+                de todo lo que existe.
+            </p>
+
+        </section>
+
+        <section class="seccion">
+            <h2>☀️ El sistema solar</h2>
+            <p>
+                Se encuentra dentro de la galaxia
+                conocida como la vía láctea, está formado por el sol y todos
+                los cuerpos que están ligados gravitacionalmente a él.
+            </p>
+            <div class="tarjetas">
+                <article class="tarjeta-info">
+                    <span>☀️</span>
+                    <h3>El sol</h3>
+                    <p>
+                        Es una estrella ubicada en el centro del Sistema Solar,
+                        su energía permite que exista vida en la Tierra.
+                    </p>
+                </article>
+
+                <article class="tarjeta-info">
+                    <span>🌎</span>
+                    <h3>La tierra</h3>
+                    <p>
+                        Es nuestro planeta y el único lugar conocido donde
+                        existe vida.
+                    </p>
+                </article>
+
+                <article class="tarjeta-info">
+                    <span>🔴</span>
+                    <h3>Marte</h3>
+                    <p>
+                        Es un planeta rocoso conocido por su apariencia rojiza
+                        y por ser uno de los principales objetivos de
+                        exploración espacial.
+                    </p>
+                </article>
+
+                <article class="tarjeta-info">
+                    <span>🪐</span>
+                    <h3>Saturno</h3>
+                    <p>
+                        Es un gigante gaseoso famoso por su impresionante
+                        sistema de anillos.
+                    </p>
+                </article>
+            </div>
+
+        </section>
+
+        <section class="seccion">
+            <h2>🪐 Los planetas</h2>
+            <p>
+                Actualmente conocemos ocho planetas principales en nuestro
+                sistema solar, se dividen generalmente en planetas rocosos
+                y gigantes gaseosos o helados.
+            </p>
+            <div class="lista-planetas">
+                <div>
+                    <strong>Mercurio</strong>
+                    <span>El planeta más cercano al sol.</span>
+                </div>
+                <div>
+                    <strong>Venus</strong>
+                    <span>El planeta más caliente del sistema solar.</span>
+                </div>
+                <div>
+                    <strong>Tierra</strong>
+                    <span>Nuestro hogar y un planeta con agua líquida.</span>
+                </div>
+                <div>
+                    <strong>Marte</strong>
+                    <span>Un planeta frío y desértico.</span>
+                </div>
+                <div>
+                    <strong>Júpiter</strong>
+                    <span>El planeta más grande del sistema solar.</span>
+                </div>
+                <div>
+                    <strong>Saturno</strong>
+                    <span>Reconocido por sus grandes anillos.</span>
+                </div>
+                <div>
+                    <strong>Urano</strong>
+                    <span>Un gigante helado con una inclinación extrema.</span>
+                </div>
+                <div>
+                    <strong>Neptuno</strong>
+                    <span>El planeta más lejano del Sol.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <h2>⭐ Las estrellas</h2>
+            <p>
+                Las estrellas son enormes esferas de gas extremadamente
+                calientes, producen energía mediante procesos de fusión
+                nuclear en sus núcleos.
+            </p>
+            <p>
+                Las estrellas pueden tener diferentes tamaños, temperaturas
+                y colores; algunas son mucho más grandes y calientes que el
+                Sol, mientras que otras son pequeñas y relativamente frías.
+            </p>
+            <div class="dato-destacado">
+                <strong>⭐ ¿Sabías que?</strong>
+                <p>
+                    El Sol también es una estrella aunque parece mucho más
+                    grande que las demás estrellas del cielo, esto se debe
+                    principalmente a que se encuentra mucho más cerca de la
+                    tierra.
+                </p>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <h2>🌠 Las galaxias</h2>
+            <p>
+                Una galaxia es una enorme estructura formada por estrellas,
+                planetas, gas, polvo, materia oscura y otros objetos
+                astronómicos unidos principalmente por la gravedad.
+            </p>
+            <div class="tarjetas">
+                <article class="tarjeta-info">
+                    <span>🌌</span>
+                    <h3>Vía láctea</h3>
+                    <p>
+                        Es la galaxia en la que se encuentra nuestro sistema
+                        solar.
+                    </p>
+                </article>
+                <article class="tarjeta-info">
+                    <span>🌀</span>
+                    <h3>Galaxias espirales</h3>
+                    <p>
+                        Poseen brazos que se extienden desde una región
+                        central.
+                    </p>
+                </article>
+                <article class="tarjeta-info">
+                    <span>🔵</span>
+                    <h3>Galaxias elípticas</h3>
+                    <p>
+                        Presentan formas aproximadamente redondeadas o
+                        alargadas y contienen principalmente estrellas.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <h2>🕳️ Agujeros negros</h2>
+            <p>
+                Los agujeros negros son regiones del espacio donde la
+                gravedad es tan intensa que, dentro de una determinada
+                frontera llamada horizonte de sucesos, nada puede escapar,
+                incluida la luz.
+            </p>
+            <p>
+                Algunos agujeros negros se forman a partir del colapso de
+                estrellas masivas; también existen agujeros negros
+                supermasivos en los centros de muchas galaxias.
+            </p>
+        </section>
+
+        <section class="seccion">
+            <h2>🛰️ Exploración espacial</h2>
+            <p>
+                La exploración espacial comenzó con el desarrollo de
+                cohetes capaces de abandonar la atmósfera terrestre.
+                Desde entonces, diferentes países y organizaciones han
+                enviado satélites; sondas, telescopios y seres humanos
+                al espacio.
+            </p>
+            <div class="tarjetas">
+                <article class="tarjeta-info">
+                    <span>🛰️</span>
+                    <h3>Satélites</h3>
+                    <p>
+                        Se utilizan para comunicaciones, navegación,
+                        observación de la tierra y estudios científicos.
+                    </p>
+                </article>
+                <article class="tarjeta-info">
+                    <span>🔭</span>
+                    <h3>Telescopios</h3>
+                    <p>
+                        Permiten observar objetos extremadamente lejanos
+                        y estudiar diferentes regiones del universo.
+                    </p>
+                </article>
+                <article class="tarjeta-info">
+                    <span>🚀</span>
+                    <h3>Cohetes</h3>
+                    <p>
+                        Permiten transportar personas, satélites y
+                        diferentes instrumentos fuera de la tierra.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <h2>✨ Datos interesantes del espacio</h2>
+            <ul class="datos">
+                <li>
+                    🌎 La tierra gira alrededor del sol.
+                </li>
+                <li>
+                    🌙 La luna es el satélite natural de la tierra.
+                </li>
+                <li>
+                    ☀️ La luz del sol tarda aproximadamente 8 minutos y
+                    20 segundos en llegar a la Tierra.
+                </li>
+                <li>
+                    🌌 El universo contiene una enorme cantidad de galaxias.
+                </li>
+                <li>
+                    ⭐ Las estrellas que vemos en el cielo se encuentran
+                    a diferentes distancias de nosotros.
+                </li>
+                <li>
+                    🚀 La exploración espacial permite estudiar lugares
+                    que no podemos visitar directamente.
+                </li>
+            </ul>
+        </section>
+
+        <section class="seccion conclusion">
+            <h2>🌌 Un universo por descubrir</h2>
+            <p>
+                El espacio continúa siendo uno de los grandes campos de
+                investigación científica. Cada nueva misión, observación
+                y descubrimiento permite comprender mejor nuestro planeta;
+                nuestro sistema solar y el universo que nos rodea.
+            </p>
+            <p>
+                Aunque hemos aprendido mucho todavía existen numerosas
+                preguntas sin respuesta, la exploración espacial continúa
+                ampliando nuestros conocimientos y nuestra perspectiva
+                sobre el lugar que ocupamos en el universo.
+            </p>
+        </section>
+
+        <div class="regreso">
+            <a href="../index.html" class="boton-regresar">
+                ← Regresar al inicio
+            </a>
+        </div>
+
+    </main>
+</body>
+</html>
